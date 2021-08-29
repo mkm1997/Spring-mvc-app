@@ -35,14 +35,23 @@ public class HomeController {
 
     //@RequestMapping(value = "/addAlien", method = RequestMethod.POST)
     @PostMapping("/addAlien")
-    public String addAlien(@ModelAttribute Alien a){
+    public String addAlien(@ModelAttribute("aliens") Alien a){
         System.out.println("In add alien request" +a.toString());
-        return "result";
+        dao.addAlien(a);
+        return "showAliens";
     }
 
     @GetMapping("/getAliens")
     public String getAliens(Model m){
         m.addAttribute("aliens", dao.getAliens());
+
+        return "showAliens";
+    }
+
+    @GetMapping("/getAlien")
+    public String getAlien(@RequestParam int id,  Model m){
+
+        m.addAttribute("aliens", dao.getAlien(id));
 
         return "showAliens";
     }

@@ -20,4 +20,15 @@ public class AlienDao {
         return aliens;
     }
 
+    @Transactional
+    public  void addAlien(Alien a){
+        Session session = sessionFactory.getCurrentSession();
+        session.save(a);
+    }
+
+    @Transactional
+    public Alien getAlien(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Alien.class, id);
+    }
 }

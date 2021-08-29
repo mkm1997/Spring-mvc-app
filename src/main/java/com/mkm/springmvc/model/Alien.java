@@ -11,13 +11,7 @@ public class Alien {
     private int age;
 
 
-    public int getAge() {
-        return age;
-    }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
 
     public Alien() {
         System.out.println("Alien Object is created");
@@ -29,20 +23,28 @@ public class Alien {
         this.age = age;
     }
 
-    public int getAid() {
+    public int getId() {
         return id;
     }
 
-    public void setAid(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getAname() {
+    public String getName() {
         return this.name;
     }
 
-    public void setAname(String name) {
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
 
