@@ -1,40 +1,57 @@
 package com.mkm.springmvc.model;
 
-public class Alien {
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-    private int aid;
-    private String aname;
+@Entity
+public class Alien {
+    @Id
+    private int id;
+    private String name;
+    private int age;
+
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     public Alien() {
         System.out.println("Alien Object is created");
     }
 
-    public Alien(int aid, String aname) {
-        this.aid = aid;
-        this.aname = aname;
+    public Alien(int id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
     }
 
     public int getAid() {
-        return aid;
+        return id;
     }
 
-    public void setAid(int aid) {
-        this.aid = aid;
+    public void setAid(int id) {
+        this.id = id;
     }
 
     public String getAname() {
-        return this.aname;
+        return this.name;
     }
 
-    public void setAname(String aname) {
-        this.aname = aname;
+    public void setAname(String name) {
+        this.name = name;
     }
+
 
     @Override
     public String toString() {
         return "Alien{" +
-                "aid=" + aid +
-                ", aname=" + aname +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
                 '}';
     }
 }

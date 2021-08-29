@@ -1,7 +1,11 @@
 package com.mkm.springmvc;
 
+import com.mkm.springmvc.dao.AlienDao;
 import com.mkm.springmvc.model.Alien;
 import com.sun.org.apache.xpath.internal.operations.Mod;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +16,10 @@ import java.util.List;
 @Controller
 public class HomeController {
 
+    @Autowired
+    private SessionFactory sessionFactory;
+    @Autowired
+    private AlienDao dao;
 
     @ModelAttribute // This method will called first and available in all the controller view
     public void modelData(Model m){
@@ -34,11 +42,20 @@ public class HomeController {
 
     @GetMapping("/getAliens")
     public String getAliens(Model m){
-        List<Alien> result = Arrays.asList(new Alien(24, "manish"), new Alien(28, "Nimish"), new Alien(47, "Vivek"));
-        System.out.println("result is " + result.toString());
-        m.addAttribute("aliens", result);
+        m.addAttribute("aliens", dao.getAliens());
+
         return "showAliens";
     }
+
+//    @GetMapping("/getAliens")
+//    public String getAliens(Model m){
+//        List<Alien> result = Arrays.asList(new Alien(24, "manish"), new Alien(28, "Nimish"), new Alien(47, "Vivek"));
+//        System.out.println("result is " + result.toString());
+//        m.addAttribute("aliens", result);
+//        return "showAliens";
+//    }
+
+
 
 
 
